@@ -81,7 +81,7 @@ print(AxX)
 print(AxY)
 
 plt.bar(AxX, AxY, width=AxY, color='blue', align='edge')
-plt.xlabel('Detected At --->')
+plt.xlabel('Detected During --->')
 plt.ylabel('Duration --->')
 plt.show()
 if key == ord('q'):
