@@ -30,7 +30,7 @@ while True:
 
 
     for contour in cnts:
-        if cv2.contourArea(contour) < 1200:
+        if cv2.contourArea(contour) < 1400:
             continue
 
         status = 1
@@ -69,11 +69,11 @@ for i in range(0, len(times)-1, 2):
     if i in range(len(times) - 1):
         df=df.append({"Start": times[i], "End": times[i+1]}, ignore_index = True)
 
-    df.to_csv("Time Map.csv")
+df.to_csv("Output/Time Map.csv")
 
 
 
-data = pd.read_csv("Time Map.csv")
+data = pd.read_csv("Output/Time Map.csv")
 AxX = data["Start"].values
 AxY = data["End"].values - data["Start"].values
 
@@ -81,8 +81,11 @@ print(AxX)
 print(AxY)
 
 plt.bar(AxX, AxY, width=AxY, color='blue', align='edge')
-plt.xlabel('Detected During --->')
+plt.xlabel('Detected At --->')
 plt.ylabel('Duration --->')
+
+plt.savefig("Output/Motion Detection Graph_0.png", dpi=160, facecolor='w', edgecolor='w', orientation='landscape', papertype='a4', format='png', transparent=False)
+
 plt.show()
 if key == ord('q'):
     cv2.destroyAllWindows()
